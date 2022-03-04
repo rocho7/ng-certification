@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var environment = {\n  apiUrls: {\n    weather: \"http://api.openweathermap.org/data/2.5/weather\",\n    forecast: \"https://api.openweathermap.org/data/2.5/onecall\",\n    weatherImages: \"https://www.angulartraining.com/images/weather/\"\n  }\n};","map":null,"metadata":{},"sourceType":"module"}

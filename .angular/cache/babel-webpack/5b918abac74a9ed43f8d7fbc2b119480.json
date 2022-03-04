@@ -1,0 +1,1 @@
+{"ast":null,"code":"export var EXCLUDE_WHEATHER_INFO = ['current', 'minutely', 'hourly', 'alerts'];","map":null,"metadata":{},"sourceType":"module"}

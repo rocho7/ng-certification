@@ -22,25 +22,20 @@ export class LocationSearchedComponent implements OnInit {
   isAnyZipCodeEnter(): void {
     this.weatherService.weather$.subscribe((item: IWeather) => {
       if (item) {
-        if (this.getIndexRepeated(item) > -1) {
-          //?Actualiza los datos
-          this.infoZipCode[this.getIndexRepeated(item)] = this.setInfoAndImage(item);
+        if (item?.index >= 0) {
+          //?Respeta siempre el mismo orden en la lista de ciudades
+          this.infoZipCode[item?.index] = item;
         } else {
-          this.infoZipCode.unshift(this.setInfoAndImage(item));
+          if (this.getIndexRepeated(item) > -1) {
+            //?Actualiza los datos
+            this.infoZipCode[this.getIndexRepeated(item)] = item;
+          } else {
+            this.infoZipCode.unshift(item);
+          }
         }
         this.setLocalStore();
       }
     });
-  }
-
-  setInfoAndImage(item: IWeather) {
-    const image = WEATHER_IMAGES_AVAILABLES.includes(item?.weather[0]?.main?.toLowerCase())
-      ? `${environment?.apiUrls?.weatherImages}${item?.weather[0]?.main?.toLowerCase()}`
-      : IMAGE_NO_AVAILABLE_PATH;
-    return {
-      ...item,
-      imagesWeather: `${image}.png`,
-    };
   }
 
   trackByItem(index: number, el: IWeather): number {
@@ -48,7 +43,8 @@ export class LocationSearchedComponent implements OnInit {
   }
 
   getIndexRepeated(item: IWeather): number {
-    return this.infoZipCode.findIndex((cod) => item?.id === cod.id);
+    console.log("%cthis.infoZipCode ", "color: red; display: block; width: 100%;", this.infoZipCode);
+    return this.infoZipCode.findIndex((cod) => item?.id === cod?.id);
   }
 
   removeItem(index: number) {

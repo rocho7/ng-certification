@@ -39,15 +39,15 @@ export class ZipCodeComponent implements OnInit {
   }
 
   isLocalStore(): void {
-    JSON.parse(localStorage.getItem(LOCALSTORAGE_NAME)).forEach((it: IWeather) => {
-      this.getWeather(it?.name);
+    JSON.parse(localStorage.getItem(LOCALSTORAGE_NAME)).forEach((it: IWeather, index: number) => {
+      this.getWeather(it?.name, index);
     });
   }
 
-  getWeather(data): void {
+  getWeather(data: string | number, index?: number): void {
     this.weatherService.getWeatherBy(data).subscribe((res: IWeather) => {
       if (res) {
-        this.weatherService.weather$.next(res);
+        this.weatherService.weather$.next(this.weatherService.setInfoAndImage(res, index));
       }
     });
   }
