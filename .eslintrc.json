@@ -1,0 +1,107 @@
+{
+  "root": true,
+  "ignorePatterns": [
+    "projects/**/*"
+  ],
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parserOptions": {
+        "project": [
+          "tsconfig.json",
+          "e2e/tsconfig.json"
+        ],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "plugin:@angular-eslint/ng-cli-compat",
+        "plugin:@angular-eslint/ng-cli-compat--formatting-add-on",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:sonarjs/recommended",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "@typescript-eslint/consistent-type-definitions": "error",
+        "@typescript-eslint/dot-notation": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "off",
+          {
+            "accessibility": "explicit"
+          }
+        ],
+        "@typescript-eslint/no-use-before-define": "error",
+        "brace-style": [
+          "error",
+          "1tbs"
+        ],
+        "id-blacklist": "off",
+        "id-match": "off",
+        "import/no-extraneous-dependencies": "error",
+        "import/no-internal-modules": [
+          "error",
+          {
+            "allow": [
+              "@angular/**",
+              "@app/**",
+              "@env/**",
+              "@core/**",
+              "@features/**",
+              "@models/**",
+              "@translations/**",
+              "components/**",
+              "core-js/**",
+              "devextreme/**",
+              "jszip/**",
+              "ngx-bootstrap/**",
+              "primeng/**",
+              "tests/**",
+              "zone.js/**",
+              "rxjs/**"
+            ]
+          }
+        ],
+        "no-underscore-dangle": "off",
+        "prefer-arrow/prefer-arrow-functions": [
+          "error",
+          {
+             "allowStandaloneDeclarations": true,
+             "disallowPrototype": false
+          }
+        ],
+        "@typescript-eslint/naming-convention": [
+            "error",
+            { "selector": "property", "format": null }
+        ],
+        "@typescript-eslint/ban-types": [
+            "error",
+            {
+              "types": {
+                  "Function": false
+              }
+            }
+        ]
+      }
+    },
+    {
+      "files": [
+        "*.html"
+      ],
+      "extends": [
+        "plugin:@angular-eslint/template/recommended"
+      ],
+      "rules": {}
+    },
+    {
+      "files": ["*.html"],
+      "excludedFiles": ["*inline-template-*.component.html"],
+      "extends": ["plugin:prettier/recommended"],
+      "rules": {
+        "prettier/prettier": ["error", {
+          "parser": "angular"
+        }]
+      }
+    }
+  ]
+}

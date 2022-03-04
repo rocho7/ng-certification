@@ -1,0 +1,1 @@
+export const EXCLUDE_WHEATHER_INFO: Array<string> = ['current', 'minutely', 'hourly', 'alerts'];

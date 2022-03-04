@@ -1,0 +1,1 @@
+export const API_KEY_WHEATHER: string = '70c5a0b392b834d8fc3818aa7d9ea221';

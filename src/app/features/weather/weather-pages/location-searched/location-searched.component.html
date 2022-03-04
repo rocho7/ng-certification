@@ -1,0 +1,17 @@
+<div class="well flex" *ngFor="let city of infoZipCode; index as i; trackBy: trackByItem">
+  <div>
+    <h3>{{ city?.name }} ({{ city?.id }})</h3>
+    <h4>Current conditions: {{ city?.weather[0]?.main }}</h4>
+    <h4>Temperatures today:</h4>
+    <p>Current {{ city?.main?.temp }} - Max {{ city?.main?.temp_max }} - Min {{ city?.main?.temp_min }}</p>
+    <p>
+      <a [routerLink]="['/forecast']" [queryParams]="{ lon: city?.coord?.lon, lat: city?.coord?.lat, name: city?.name }"
+        >Show 5-day forecast for {{ city?.name }}</a
+      >
+    </p>
+  </div>
+  <div>
+    <span class="close" (click)="removeItem(i)">×</span>
+    <img [src]="city?.imagesWeather" />
+  </div>
+</div>
