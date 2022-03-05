@@ -7,6 +7,10 @@ const routes: Routes = [
     path: "",
     component: WeatherPagesComponent,
   },
+  {
+    path: "**",
+    component: WeatherPagesComponent,
+  },
 ];
 
 @NgModule({
