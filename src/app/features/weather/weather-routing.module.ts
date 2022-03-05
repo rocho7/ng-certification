@@ -11,6 +11,8 @@ const routes: Routes = [
     path: "**",
     component: WeatherPagesComponent,
   },
+
+  { path: "", redirectTo: "/", pathMatch: "full" },
 ];
 
 @NgModule({
